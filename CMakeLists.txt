@@ -16,8 +16,8 @@ endif()
 set(PROTOC_BIN /usr/bin/protoc)
 set(GRPC_CPP_PLUGIN /usr/bin/grpc_cpp_plugin)
 
-set(PROTO_DIR ${CMAKE_SOURCE_DIR}/proto)
-set(GEN_DIR ${CMAKE_BINARY_DIR}/gen)
+set(PROTO_DIR ${CMAKE_CURRENT_SOURCE_DIR}/proto)
+set(GEN_DIR ${CMAKE_CURRENT_BINARY_DIR}/gen)
 file(MAKE_DIRECTORY ${GEN_DIR})
 
 function(generate_proto name)
