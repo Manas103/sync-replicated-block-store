@@ -1,0 +1,1 @@
+/usr/bin/c++ -fsanitize=thread -g -g -fsanitize=thread CMakeFiles/fault_harness.dir/tools/fault_harness.cpp.o -o fault_harness  libsyncrepl_core.a libsyncrepl_proto.a -lgrpc++ -lgrpc -lgpr -lprotobuf -lpthread 

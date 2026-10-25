@@ -1,0 +1,1 @@
+/usr/bin/c++ -fsanitize=address,undefined -fno-omit-frame-pointer -g -g -fsanitize=address,undefined CMakeFiles/syncrepl_tests.dir/tests/test_linearizability_checker.cpp.o CMakeFiles/syncrepl_tests.dir/tests/test_replica_sync.cpp.o -o syncrepl_tests  libsyncrepl_core.a lib/libgtest_main.a -lpthread libsyncrepl_proto.a -lgrpc++ -lgrpc -lgpr -lprotobuf -lpthread lib/libgtest.a 

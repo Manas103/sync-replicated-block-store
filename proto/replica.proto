@@ -1,0 +1,103 @@
+syntax = "proto3";
+package syncrepl;
+
+// One array node in a two-node ActiveCluster-style pod. Every RPC here is
+// either the client-facing write/read path or the machinery that keeps
+// the pair synchronously replicated and arbitrates who may keep serving
+// writes alone when the other side is unreachable.
+service ReplicaService {
+  rpc Write(WriteRequest) returns (WriteReply);
+  rpc Read(ReadRequest) returns (ReadReply);
+
+  // Internal: the peer forwarding a write that must land on both nodes
+  // before the client is acknowledged.
+  rpc PeerReplicate(PeerReplicateRequest) returns (PeerReplicateReply);
+
+  // Internal: liveness probe between the two nodes of a pod.
+  rpc Heartbeat(HeartbeatRequest) returns (HeartbeatReply);
+
+  // Test-only: makes this node's calls to its peer fail locally without
+  // touching the network, the same technique the portfolio's
+  // raft-sharded-kv-store checker uses for partition injection.
+  rpc SetFaultMode(FaultModeRequest) returns (FaultModeReply);
+
+  // Resync, always a full snapshot pull-and-adopt rather than an
+  // incremental log replay (see README Limitations).
+  rpc Snapshot(SnapshotRequest) returns (SnapshotReply);
+  rpc AdoptSnapshot(AdoptSnapshotRequest) returns (AdoptSnapshotReply);
+
+  // The resyncing node tells its peer it has caught up, so the peer can
+  // drop sole-survivor status and release the mediator's grant.
+  rpc NotifyRejoined(NotifyRejoinedRequest) returns (NotifyRejoinedReply);
+}
+
+message WriteRequest {
+  uint32 key = 1;
+  bytes value = 2;
+}
+message WriteReply {
+  bool ok = 1;
+  uint64 seq = 2;
+  string error = 3;
+}
+
+message ReadRequest {
+  uint32 key = 1;
+}
+message ReadReply {
+  bool ok = 1;
+  bytes value = 2;
+  uint64 seq = 3;
+  string error = 4;
+}
+
+message PeerReplicateRequest {
+  uint32 key = 1;
+  bytes value = 2;
+  uint64 seq = 3;
+  uint64 epoch = 4;
+}
+message PeerReplicateReply {
+  bool ok = 1;
+  string error = 2;
+}
+
+message HeartbeatRequest {
+  uint64 epoch = 1;
+}
+message HeartbeatReply {
+  bool alive = 1;
+  uint64 epoch = 2;
+  bool fenced = 3;
+}
+
+message FaultModeRequest {
+  bool drop_peer_calls = 1;
+}
+message FaultModeReply {
+  bool ok = 1;
+}
+
+message Entry {
+  uint32 key = 1;
+  bytes value = 2;
+  uint64 seq = 3;
+}
+message SnapshotRequest {}
+message SnapshotReply {
+  repeated Entry entries = 1;
+  uint64 epoch = 2;
+}
+
+message AdoptSnapshotRequest {
+  repeated Entry entries = 1;
+  uint64 epoch = 2;
+}
+message AdoptSnapshotReply {
+  bool ok = 1;
+}
+
+message NotifyRejoinedRequest {}
+message NotifyRejoinedReply {
+  bool ok = 1;
+}

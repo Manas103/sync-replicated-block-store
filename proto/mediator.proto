@@ -1,0 +1,33 @@
+syntax = "proto3";
+package syncrepl;
+
+// The external mediator: a third party, independent of both array nodes,
+// that a node asks for permission to keep serving writes alone when it
+// cannot reach its peer. It grants sole-survivor status to exactly one
+// requester at a time per pod, which is the entire mechanism that keeps a
+// communication loss from producing two divergent writable copies.
+service MediatorService {
+  rpc RequestSurvivor(SurvivorRequest) returns (SurvivorReply);
+  rpc ReleaseSurvivor(ReleaseRequest) returns (ReleaseReply);
+  rpc Status(StatusRequest) returns (StatusReply);
+}
+
+message SurvivorRequest {
+  string node_id = 1;
+}
+message SurvivorReply {
+  bool granted = 1;
+  string current_holder = 2;
+}
+
+message ReleaseRequest {
+  string node_id = 1;
+}
+message ReleaseReply {
+  bool ok = 1;
+}
+
+message StatusRequest {}
+message StatusReply {
+  string current_holder = 1;
+}

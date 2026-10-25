@@ -1,0 +1,2 @@
+/usr/bin/ar qc libsyncrepl_proto.a CMakeFiles/syncrepl_proto.dir/gen/replica.pb.cc.o CMakeFiles/syncrepl_proto.dir/gen/replica.grpc.pb.cc.o CMakeFiles/syncrepl_proto.dir/gen/mediator.pb.cc.o CMakeFiles/syncrepl_proto.dir/gen/mediator.grpc.pb.cc.o
+/usr/bin/ranlib libsyncrepl_proto.a

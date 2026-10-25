@@ -1,0 +1,3 @@
+# Hashes of file build rules.
+cb799a4aa17ea7a325a9910f41d0a14f gen/mediator.pb.cc
+5773f8d1ed9d1bb3e475e431b65e15f4 gen/replica.pb.cc

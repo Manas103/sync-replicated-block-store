@@ -1,0 +1,1 @@
+/usr/bin/c++ -fsanitize=thread -g -g -fsanitize=thread CMakeFiles/mediator_main.dir/src/main_mediator.cpp.o -o mediator_main  libsyncrepl_core.a libsyncrepl_proto.a -lgrpc++ -lgrpc -lgpr -lprotobuf -lpthread 

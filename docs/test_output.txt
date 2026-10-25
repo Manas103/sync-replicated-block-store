@@ -1,0 +1,28 @@
+Running main() from /mnt/c/Users/Manas/Downloads/Auto Job Applier/Total Job Application process flow/projects/log-structured-dedup-block-store/build/_deps/googletest-src/googletest/src/gtest_main.cc
+[==========] Running 8 tests from 2 test suites.
+[----------] Global test environment set-up.
+[----------] 6 tests from LinearizabilityChecker
+[ RUN      ] LinearizabilityChecker.SequentialHistoryIsLinearizable
+[       OK ] LinearizabilityChecker.SequentialHistoryIsLinearizable (0 ms)
+[ RUN      ] LinearizabilityChecker.ReadOverlappingAWriteMayReturnEitherValue
+[       OK ] LinearizabilityChecker.ReadOverlappingAWriteMayReturnEitherValue (0 ms)
+[ RUN      ] LinearizabilityChecker.StaleReadAfterANonOverlappingWriteIsAViolation
+[       OK ] LinearizabilityChecker.StaleReadAfterANonOverlappingWriteIsAViolation (0 ms)
+[ RUN      ] LinearizabilityChecker.ReadOfNeverWrittenValueIsAViolation
+[       OK ] LinearizabilityChecker.ReadOfNeverWrittenValueIsAViolation (0 ms)
+[ RUN      ] LinearizabilityChecker.KeysAreCheckedIndependently
+[       OK ] LinearizabilityChecker.KeysAreCheckedIndependently (0 ms)
+[ RUN      ] LinearizabilityChecker.FailedOpsAreExcludedFromTheHistory
+[       OK ] LinearizabilityChecker.FailedOpsAreExcludedFromTheHistory (0 ms)
+[----------] 6 tests from LinearizabilityChecker (1 ms total)
+
+[----------] 2 tests from ReplicaSync
+[ RUN      ] ReplicaSync.WriteReplicatesSynchronouslyToBothNodes
+[       OK ] ReplicaSync.WriteReplicatesSynchronouslyToBothNodes (233 ms)
+[ RUN      ] ReplicaSync.PartitionedNodeFencesAndSurvivorServesAlone
+[       OK ] ReplicaSync.PartitionedNodeFencesAndSurvivorServesAlone (333 ms)
+[----------] 2 tests from ReplicaSync (567 ms total)
+
+[----------] Global test environment tear-down
+[==========] 8 tests from 2 test suites ran. (570 ms total)
+[  PASSED  ] 8 tests.
