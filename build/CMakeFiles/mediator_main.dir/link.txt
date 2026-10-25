@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/mediator_main.dir/src/main_mediator.cpp.o -o mediator_main  libsyncrepl_core.a libsyncrepl_proto.a -lgrpc++ -lgrpc -lgpr -lprotobuf -lpthread 

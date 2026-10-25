@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/fault_harness.dir/tools/fault_harness.cpp.o -o fault_harness  libsyncrepl_core.a libsyncrepl_proto.a -lgrpc++ -lgrpc -lgpr -lprotobuf -lpthread 

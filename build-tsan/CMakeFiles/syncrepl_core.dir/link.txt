@@ -1,2 +1,0 @@
-/usr/bin/ar qc libsyncrepl_core.a CMakeFiles/syncrepl_core.dir/src/replica_node.cpp.o CMakeFiles/syncrepl_core.dir/src/mediator_service.cpp.o CMakeFiles/syncrepl_core.dir/src/linearizability_checker.cpp.o
-/usr/bin/ranlib libsyncrepl_core.a

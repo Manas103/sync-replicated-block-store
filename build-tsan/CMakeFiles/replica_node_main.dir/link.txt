@@ -1,1 +1,0 @@
-/usr/bin/c++ -fsanitize=thread -g -g -fsanitize=thread CMakeFiles/replica_node_main.dir/src/main_replica.cpp.o -o replica_node_main  libsyncrepl_core.a libsyncrepl_proto.a -lgrpc++ -lgrpc -lgpr -lprotobuf -lpthread 
